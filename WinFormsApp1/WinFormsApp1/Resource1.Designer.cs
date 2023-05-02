@@ -77,5 +77,14 @@ namespace UserMaintenance {
                 return ResourceManager.GetString("List", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fájlba írás.
+        /// </summary>
+        public static string WriteToFile {
+            get {
+                return ResourceManager.GetString("WriteToFile", resourceCulture);
+            }
+        }
     }
 }

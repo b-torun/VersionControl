@@ -12,5 +12,6 @@ namespace UserMaintenance.Entities
         public string FirstName;
         public string LastName;
         public string FullName { get; set; }
+        
     }
 }

@@ -12,7 +12,8 @@ namespace WinFormsApp1
             InitializeComponent();
             lblFullName.Text = UserMaintenance.Resource1.FullName;// label1           
             btnList.Text =  UserMaintenance.Resource1.List; // button1
-                                                          // listbox1
+                                                            // listbox1
+            btnWriteToFile.Text = UserMaintenance.Resource1.WriteToFile;
             listUsers.DataSource = users;
             listUsers.ValueMember = "ID";
             listUsers.DisplayMember = "FullName";
@@ -36,6 +37,24 @@ namespace WinFormsApp1
                 
             };
             users.Add(u);
+        }
+
+        private void btnWriteToFile_Click(object sender, EventArgs e)
+        
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt";
+            saveFileDialog.Title = "Save Users List";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                {                  
+                    foreach (User user in users)
+                    {
+                        writer.WriteLine($"{user.ID}\t{user.FullName}");
+                    }
+                }
+            }
         }
     }
 
