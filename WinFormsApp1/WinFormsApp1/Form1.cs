@@ -14,6 +14,7 @@ namespace WinFormsApp1
             btnList.Text =  UserMaintenance.Resource1.List; // button1
                                                             // listbox1
             btnWriteToFile.Text = UserMaintenance.Resource1.WriteToFile;
+            btnDelete.Text = UserMaintenance.Resource1.Delete;
             listUsers.DataSource = users;
             listUsers.ValueMember = "ID";
             listUsers.DisplayMember = "FullName";
@@ -54,6 +55,15 @@ namespace WinFormsApp1
                         writer.WriteLine($"{user.ID}\t{user.FullName}");
                     }
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var selectedItems = listUsers.SelectedItems.Cast<User>().ToList();
+            foreach (var item in selectedItems)
+            {
+                users.Remove(item);
             }
         }
     }

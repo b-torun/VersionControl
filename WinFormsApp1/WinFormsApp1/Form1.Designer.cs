@@ -33,6 +33,7 @@
             this.lblFullName = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.btnWriteToFile = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listUsers
@@ -81,11 +82,22 @@
             this.btnWriteToFile.UseVisualStyleBackColor = true;
             this.btnWriteToFile.Click += new System.EventHandler(this.btnWriteToFile_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(422, 283);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(320, 29);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "button1";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnWriteToFile);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.lblFullName);
@@ -106,5 +118,6 @@
         private Label lblFullName;
         private TextBox txtFullName;
         private Button btnWriteToFile;
+        private Button btnDelete;
     }
 }
