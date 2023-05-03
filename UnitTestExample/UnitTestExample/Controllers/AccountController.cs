@@ -50,6 +50,31 @@ namespace UnitTestExample.Controllers
 
         public bool ValidatePassword(string password)
         {
+            // Ellenőrizzük, hogy a jelszó legalább 8 karakter hosszú-e
+            if (password.Length < 8)
+            {
+                return false;
+            }
+
+            // Ellenőrizzük, hogy a jelszó tartalmaz-e kisbetűt
+            if (!Regex.IsMatch(password, @"[a-z]"))
+            {
+                return false;
+            }
+
+            // Ellenőrizzük, hogy a jelszó tartalmaz-e nagybetűt
+            if (!Regex.IsMatch(password, @"[A-Z]"))
+            {
+                return false;
+            }
+
+            // Ellenőrizzük, hogy a jelszó tartalmaz-e számot
+            if (!Regex.IsMatch(password, @"[0-9]"))
+            {
+                return false;
+            }
+
+            // Ha minden feltételnek megfelel, akkor a jelszó érvényes
             return true;
         }
     }
