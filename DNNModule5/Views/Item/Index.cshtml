@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Licitálló felület</title>
+    <style>
+        .auction-item {
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+            .auction-item h4 {
+                margin-top: 0;
+            }
+
+            .auction-item img {
+                width: 200px;
+                height: auto;
+            }
+
+        .bid-form input[type="number"] {
+            width: 100px;
+        }
+
+        .bid-form button {
+            margin-left: 10px;
+        }
+
+        .current-price-input {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auction-item">
+        <h4>Termék</h4>
+        <img src="https://i.imgur.com/9CtJfP6.jpg" alt="Kep">
+        <input type="text" class="current-price-input" value="1000 Ft" disabled>
+        <form class="bid-form">
+            <input type="number" step="1000" placeholder="Licit összege" required>
+            <button type="submit">Licitálj</button>
+        </form>
+    </div>
+
+    <script>
+        function updateCurrentPrice() {
+            var bidForms = document.querySelectorAll('.bid-form');
+            bidForms.forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    var bidInput = form.querySelector('input[type="number"]');
+                    var bidAmount = parseFloat(bidInput.value);
+
+                    var currentItem = form.closest('.auction-item');
+                    var currentPriceElement = currentItem.querySelector('.current-price-input');
+                    var currentPrice = parseFloat(currentPriceElement.value.replace(' Ft', '').replace('.', '').replace(',', '.'));
+
+                    if (bidAmount > currentPrice) {
+                        currentPrice = bidAmount;
+                        currentPriceElement.value = currentPrice.toFixed(2).replace('.', ',') + ' Ft';
+                    } else {
+                        alert('A licit összegnek magasabbnak kell lennie, mint a jelenlegi ár.');
+                    }
+
+                    bidInput.value = '';
+                });
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', updateCurrentPrice);
+    </script>
+
+</body>
+</html>
